@@ -11,8 +11,30 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/style.css">
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <style type="text/css">
+        .loading-overlay {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #fff;
+            opacity: 0.6;
+        }
+
+        .spin-loader {
+            height: 100px;
+            background: url("http://i62.tinypic.com/2hzsro.gif") no-repeat center center transparent;
+            position: relative;
+            top: 25%;
+        }
+
+    </style>
     <script type="text/javascript">
         $(function(){
+            $('.loading-overlay').show();
+            setTimeout(function() {$('.loading-overlay').hide()}, 3000);
             $("#section-1").load("About.html"); 
             $("#section-2").load("RoadMap.html");
             $("#section-3").load("Token_Allocation.html");
@@ -30,8 +52,6 @@
 </head>
 
 <body>
-    
-    <!-- <embed src="music/AgeOfTechnology.mp3" autostart="true" loop="true" width="0px" height="0px" id="background_music"> -->
     <button class="header__bars menu-btn hidden-lg hidden-md" type="button">
       <span></span>
       <span></span>
@@ -166,6 +186,9 @@
             </div>
     </div>
     </footer>
+    <div class="loading-overlay">
+        <div class="spin-loader"></div>
+    </div>
     <canvas id="page-bg-2" class="page-bg" style="display: none;"></canvas>
     <div id="webgl-container">
         <canvas id="webgl-canvas" class="s_1__bg" style="background: url('img/primary-background.jpg')"></canvas>
