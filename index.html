@@ -34,7 +34,7 @@
     <script type="text/javascript">
         $(function(){
             $('.loading-overlay').show();
-            setTimeout(function() {$('.loading-overlay').hide()}, 3000);
+            setTimeout(function() {$('.loading-overlay').hide()}, 5000);
             $("#section-1").load("About.html"); 
             $("#section-2").load("RoadMap.html");
             $("#section-3").load("Token_Allocation.html");
@@ -57,6 +57,9 @@
       <span></span>
       <span></span>
     </button>
+    <div class="loading-overlay">
+        <div class="spin-loader"></div>
+    </div>
     <div id="page-wrap">
         <div class="sections-wrap__overflow"></div>
         <nav class="nav" id="nav">
@@ -184,11 +187,8 @@
                     </div>
                 </div>
             </div>
-    </div>
-    </footer>
-    <div class="loading-overlay">
-        <div class="spin-loader"></div>
-    </div>
+        </footer>
+    </div>    
     <canvas id="page-bg-2" class="page-bg" style="display: none;"></canvas>
     <div id="webgl-container">
         <canvas id="webgl-canvas" class="s_1__bg" style="background: url('img/primary-background.jpg')"></canvas>
