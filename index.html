@@ -32,24 +32,27 @@
 
     </style> -->
     <script type="text/javascript">        
-        $(function(){
-            // $("#section-1").load("About.html"); 
-            $("#section-2").load("RoadMap.html");
-            $("#section-3").load("Token_Allocation.html");
-            $("#section-4").load("Token.html");
-            $("#section-5").load("Dapps.html");
-            $("#section-6").load("Pre_ICO.html");
-            $("#section-7").load("Governance.html");
-            $("#section-8").load("Bounties.html");
-            $("#section-9").load("Teams.html");
-            $("#section-10").load("Partners.html");
-            $("#section-11").load("FAQ.html");
-        });
-        
+        // $(function(){
+        //     // $("#section-1").load("About.html"); 
+        //     $("#section-2").load("RoadMap.html");
+        //     $("#section-3").load("Token_Allocation.html");
+        //     $("#section-4").load("Token.html");
+        //     $("#section-5").load("Dapps.html");
+        //     $("#section-6").load("Pre_ICO.html");
+        //     $("#section-7").load("Governance.html");
+        //     $("#section-8").load("Bounties.html");
+        //     $("#section-9").load("Teams.html");
+        //     $("#section-10").load("Partners.html");
+        //     $("#section-11").load("FAQ.html");
+        // });
+        function myFunction() {
+             document.getElementById("section-2").innerHTML='<object type="text/html" data="RoadMap.html" ></object>';
+        }
+
     </script>
 </head>
 
-<body>
+<body onload="myFunction()">
     <button class="header__bars menu-btn hidden-lg hidden-md" type="button">
       <span></span>
       <span></span>
@@ -267,7 +270,7 @@
             
         </section>
     </div>
-    <script src="js/scripts.min.js"></script>
+    
 </body>
-
+<script src="js/scripts.min.js"></script>
 </html>
