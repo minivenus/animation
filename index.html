@@ -11,26 +11,6 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/style.css">
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <!-- <style type="text/css">
-        .loading-overlay {
-            display: none;
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #fff;
-            opacity: 0.6;
-        }
-
-        .spin-loader {
-            height: 100px;
-            background: url("http://i62.tinypic.com/2hzsro.gif") no-repeat center center transparent;
-            position: relative;
-            top: 25%;
-        }
-
-    </style> -->
     <script type="text/javascript">        
         // $(function(){
         //     // $("#section-1").load("About.html"); 
@@ -45,14 +25,63 @@
         //     $("#section-10").load("Partners.html");
         //     $("#section-11").load("FAQ.html");
         // });
-        function myFunction() {
-             document.getElementById("section-2").innerHTML='<object type="text/html" data="RoadMap.html" ></object>';
-        }
+        load_flag = 0;
+        $("#section-1").load("About.html", function() {
+            load_flag++;
+            console.log(load_flag);
+        }); 
+        $("#section-2").load("RoadMap.html", function() {
+            load_flag++;
+            console.log(load_flag);
+        });
+        $("#section-3").load("Token_Allocation.html", function() {
+            load_flag++;
+            console.log(load_flag);
+        });
+        $("#section-4").load("Token.html",function() {
+            load_flag++;
+            console.log(load_flag);
+        });
+        $("#section-5").load("Dapps.html",function() {
+            load_flag++;
+            console.log(load_flag);
+        });
+        $("#section-6").load("Pre_ICO.html", function() {
+            load_flag++;
+            console.log(load_flag);
+        });
+        $("#section-7").load("Governance.html", function() {
+            load_flag++;
+            console.log(load_flag);
+        });
+        $("#section-8").load("Bounties.html",function() {
+            load_flag++;
+            console.log(load_flag);
+        });
+        $("#section-9").load("Teams.html",function() {
+            load_flag++;
+            console.log(load_flag);
+        });
+        $("#section-10").load("Partners.html",function() {
+            load_flag++;
+            console.log(load_flag);
+        });
+        $("#section-11").load("FAQ.html",function() {
+            load_flag++;
+            console.log(load_flag);
+            if(load_flag == 11) {
+                // alert("pass");
+                var my_awesome_script = document.createElement('script');
+                my_awesome_script.setAttribute('src','js/scripts.min.js');
+                my_awesome_script.async = true;
+                document.head.appendChild(my_awesome_script);
+            }
+        });
 
     </script>
 </head>
 
-<body onload="myFunction()">
+<body>
     <button class="header__bars menu-btn hidden-lg hidden-md" type="button">
       <span></span>
       <span></span>
@@ -196,37 +225,7 @@
     </div>
     <div id="fullpage" class="sections-wrap">
         <!-- About -->
-        <section class="section s_1 head-home" id="section-1">
-            
-            <div class="container">
-                <div class="row">
-                    <div class="col-xs-12">
-                        <h1 class="s_1__h">EFFICIENT, TIERED <br>& REPUTATION DAO <br>GOVERNANCE FRAMEWORK</h1>
-                        <div class="s_1__countdown__title">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</div>
-                        <div class="clearfix"></div>
-                        <div class="s_1__links">
-                            <div class="btn_link">
-                                <div class="btn_corner btn_corner-tl"></div>
-                                <div class="btn_corner btn_corner-tr"></div>
-                                <div class="btn_corner btn_corner-br"></div>
-                                <div class="btn_corner btn_corner-bl"></div>
-                                <!-- <div class="btn_border btn_border-top-bottom"></div>
-                    <div class="btn_border btn_border-left-right"></div> -->
-                                <a href="" target="_blank" class="header__auth header__demo" style="margin-left: 0px !important;">Documentation</a>
-                            </div>
-                            <div class="btn_link" style="margin-left: 20px;">
-                                <div class="btn_corner btn_corner-tl"></div>
-                                <div class="btn_corner btn_corner-tr"></div>
-                                <div class="btn_corner btn_corner-br"></div>
-                                <div class="btn_corner btn_corner-bl"></div>
-                                <!-- <div class="btn_border btn_border-top-bottom"></div>
-                    <div class="btn_border btn_border-left-right"></div> -->
-                                <a href="" target="_blank" class="header__auth header__demo" style="margin-left: 0px !important;">Participate</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <section class="section s_1 head-home" id="section-1">            
 
         </section>
         <!-- RoadMap -->
@@ -270,7 +269,7 @@
             
         </section>
     </div>
-    
+    <!-- <script src="js/scripts.min.js"></script> -->
 </body>
-<script src="js/scripts.min.js"></script>
+
 </html>
