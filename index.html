@@ -25,58 +25,60 @@
         //     $("#section-10").load("Partners.html");
         //     $("#section-11").load("FAQ.html");
         // });
-        load_flag = 0;
-        $("#section-1").load("About.html", function() {
-            load_flag++;
-            console.log(load_flag);
-        }); 
-        $("#section-2").load("RoadMap.html", function() {
-            load_flag++;
-            console.log(load_flag);
-        });
-        $("#section-3").load("Token_Allocation.html", function() {
-            load_flag++;
-            console.log(load_flag);
-        });
-        $("#section-4").load("Token.html",function() {
-            load_flag++;
-            console.log(load_flag);
-        });
-        $("#section-5").load("Dapps.html",function() {
-            load_flag++;
-            console.log(load_flag);
-        });
-        $("#section-6").load("Pre_ICO.html", function() {
-            load_flag++;
-            console.log(load_flag);
-        });
-        $("#section-7").load("Governance.html", function() {
-            load_flag++;
-            console.log(load_flag);
-        });
-        $("#section-8").load("Bounties.html",function() {
-            load_flag++;
-            console.log(load_flag);
-        });
-        $("#section-9").load("Teams.html",function() {
-            load_flag++;
-            console.log(load_flag);
-        });
-        $("#section-10").load("Partners.html",function() {
-            load_flag++;
-            console.log(load_flag);
-        });
-        $("#section-11").load("FAQ.html",function() {
-            load_flag++;
-            console.log(load_flag);
-            if(load_flag == 11) {
-                // alert("pass");
-                var my_awesome_script = document.createElement('script');
-                my_awesome_script.setAttribute('src','js/scripts.min.js');
-                my_awesome_script.async = true;
-                document.head.appendChild(my_awesome_script);
-            }
-        });
+        $(function(){
+            load_flag = 0;
+            $("#section-1").load("About.html", function() {
+                load_flag++;
+                console.log(load_flag);
+            }); 
+            $("#section-2").load("RoadMap.html", function() {
+                load_flag++;
+                console.log(load_flag);
+            });
+            $("#section-3").load("Token_Allocation.html", function() {
+                load_flag++;
+                console.log(load_flag);
+            });
+            $("#section-4").load("Token.html",function() {
+                load_flag++;
+                console.log(load_flag);
+            });
+            $("#section-5").load("Dapps.html",function() {
+                load_flag++;
+                console.log(load_flag);
+            });
+            $("#section-6").load("Pre_ICO.html", function() {
+                load_flag++;
+                console.log(load_flag);
+            });
+            $("#section-7").load("Governance.html", function() {
+                load_flag++;
+                console.log(load_flag);
+            });
+            $("#section-8").load("Bounties.html",function() {
+                load_flag++;
+                console.log(load_flag);
+            });
+            $("#section-9").load("Teams.html",function() {
+                load_flag++;
+                console.log(load_flag);
+            });
+            $("#section-10").load("Partners.html",function() {
+                load_flag++;
+                console.log(load_flag);
+            });
+            $("#section-11").load("FAQ.html",function() {
+                load_flag++;
+                console.log(load_flag);
+                if(load_flag == 11) {
+                    // alert("pass");
+                    var my_awesome_script = document.createElement('script');
+                    my_awesome_script.setAttribute('src','js/scripts.min.js');
+                    my_awesome_script.async = true;
+                    document.head.appendChild(my_awesome_script);
+                }
+            });  
+        })
 
     </script>
 </head>
