@@ -30,6 +30,10 @@
             $("#section-1").load("About.html", function() {
                 load_flag++;
                 console.log(load_flag);
+                var my_awesome_script = document.createElement('script');
+                my_awesome_script.setAttribute('src','js/scripts.min.js');
+                my_awesome_script.async = true;
+                document.head.appendChild(my_awesome_script);
             }); 
             $("#section-2").load("RoadMap.html", function() {
                 load_flag++;
