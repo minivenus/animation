@@ -1,0 +1,149 @@
+$(window).mousewheel(function(turn, delta) {
+    var str_section = window.location.href;
+    var section_id = str_section.substring(str_section.indexOf('#') + 1, str_section.length);
+    if (section_id == "Token_allocation") {
+        window.setTimeout(initHighChart, 1000);
+    }
+
+    return false;
+});
+$(document).ready(function() {
+    $('.loading-overlay').show();
+    setTimeout(function() {$('.loading-overlay').hide()}, 5000);
+    
+    var isPlaying = function(audio) {return !audio.paused;}
+    var a = document.getElementById('main_audio');
+    a.volume = 0.05;
+    $('.music_btn').on('click', function() {
+        if (isPlaying(a)) {
+            a.pause();
+            $("#on_off").html('on');
+        } else {
+            a.play();
+            $("#on_off").html('off');
+        }
+    });
+    var str_section = window.location.href;
+    var section_id = str_section.substring(str_section.indexOf('#') + 1, str_section.length);
+    if (section_id == "Token_allocation") {
+        window.setTimeout(initHighChart, 1000);
+    }
+    $.getJSON("data/roadmap.json", function (data) {
+        for(var i = 0; i < data.length; i++) {
+            var year = i + 1;
+            var monthtext = [];
+            var monthtitle = [];
+            var monthdata = [];
+            var yeardata = [];
+            yeardata[i] = '';
+
+            if(data[i].pass == true) {
+                $('.s_2__timeline__year.s_2__timeline__year-' + year).find('.s_2__timeline__checkbox').css("background-image", "url('img/graph-active-point.png')");
+            } 
+            $('.s_2__timeline__year.s_2__timeline__year-' + year).find('.s_2__timeline__label').append(data[i].year);
+            var content = data[i].content;
+            for(var j = 0; j < content.length; j++) {
+                if(data[i].content[j] != null) {
+                    monthtext[j] = '';
+                    var text = content[j].text;
+                    for(var k = 0; k < text.length; k++) {
+                        monthtext[j] += '<br>' + text[k];
+                    }   
+                    monthtitle[j] = '';
+                    monthtitle[j] = '<strong>' + content[j].title + '</strong>';
+                    monthdata[j] = '';
+                    monthdata[j] =  '<div class="d-table-cell s_2__tabs__col">' + monthtitle[j] + monthtext[j] + '</div>';                     
+                    yeardata[i] += monthdata[j]; 
+                }                
+            }  
+            var style = '';
+            if(data[i].display == true) {
+                style = 'block';
+            } else {
+                style = 'none';
+            }
+            var temp = '<div class="s_2__tab" id="s_2__tab-' + year + '" style="display: ' + style + '"><div class="d-table">' + yeardata[i] + '</div></div>';
+            $("#myroadmap").append(temp);
+        }
+    });
+});      
+
+
+$("a, .bounty").on('mouseover', function(e) {
+    var x = document.getElementById("bg_music");
+    x.play();
+});
+function initHighChart(){
+    var options = {
+        chart: {
+            type: 'pie',
+            renderTo: 'chart',
+            backgroundColor: 'transparent',
+            width:245,
+            height:300,
+            events: {
+                load: function () { 
+                  $(".highcharts-legend-item rect").attr('height', 0);
+                  $(".highcharts-legend-item rect").attr('width', 0);
+                },
+                redraw: function () {
+                  $(".highcharts-legend-item rect").attr('height', 0);
+                  $(".highcharts-legend-item rect").attr('width', 0);
+                }
+            }
+        },
+        title: {
+            text: '',
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: false
+                },
+                showInLegend: true,
+                dataLabels: {
+                    enabled: true,
+                    format: '{point.percentage:.1f}%',
+                    distance: -50,
+                    filter: {
+                        property: 'percentage',
+                        operator: '>',
+                        value: 4
+                    }
+                }
+            }
+
+        },
+        credits:{enabled: false},
+        colors: ['#60cae9', '#48ea8d', '#FFFFFF', '#48afea'],
+        legend: {
+            enabled: true,
+            labelFormatter: function() {
+                return '';            
+            },            
+        },
+        series: [{
+            name: 'TOKEN ALLOCATION',
+            colorByPoint: true,
+            data: [{
+                name: 'Lorem',
+                y: 456.33,
+                sliced: true,
+                selected: true
+            }, {
+                name: 'Lorem',
+                y: 324.03
+            }, {
+                name: 'Lorem',
+                y: 210.38
+            }, {
+                name: 'Lorem',
+                y: 100.91
+            }]
+        }]
+    };
+    
+    var chart = new Highcharts.Chart(options);
+}
