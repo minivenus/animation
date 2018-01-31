@@ -8,6 +8,146 @@ $(window).mousewheel(function(turn, delta) {
     return false;
 });
 $(document).ready(function() {
+    var data = [
+        {
+            "year" : "2014",
+            "pass": true,
+            "display": false,
+            "content": [
+                {
+                    "title": "May – June",
+                    "text": ["Lorem Ipsum"]
+                },
+                {
+                    "title": "July – September",
+                    "text": ["Lorem Ipsum"]
+                },
+                {
+                    "title": "October – December",
+                    "text": ["Lorem Ipsum"]
+                }
+            ]
+        },
+        {
+            "year" : "2015",
+            "pass": true,
+            "display": false,
+            "content": [
+                {
+                    "title": "January – May",
+                    "text": ["Lorem Ipsum"]
+                },
+                {
+                    "title": "June – August",
+                    "text": ["Lorem Ipsum"]
+                },
+                {
+                    "title": "September – November",
+                    "text": ["Lorem Ipsum"]
+                },
+                {
+                    "title": "December",
+                    "text": ["Lorem Ipsum"]
+                }
+            ]
+        },
+        {
+            "year": "2016",
+            "pass": true,
+            "display": false,
+            "content": [
+                {
+                    "title": "January – May",
+                    "text": ["Lorem Ipsum"]
+                },
+                {
+                    "title": "June",
+                    "text": ["Lorem Ipsum"]
+                },
+                {
+                    "title": "June – July",
+                    "text": ["Lorem Ipsum"]
+                },
+                {
+                    "title": "August – September",
+                    "text": ["Lorem Ipsum"]
+                },
+                {
+                    "title": "October",
+                    "text": ["Lorem Ipsum"]
+                },
+                {
+                    "title": "November - December",
+                    "text": ["Lorem Ipsum"]
+                }
+            ]
+        },
+        {
+            "year": "2017",
+            "pass": true,
+            "display": false,
+            "content": [
+                {
+                    "title": "January – February",
+                    "text": ["Lorem Ipsum"]
+                },
+                {
+                    "title": "April",
+                    "text": ["Lorem Ipsum", "Lorem Ipsum"]
+                },
+                {
+                    "title": "July",
+                    "text": ["Lorem Ipsum", "Lorem Ipsum"]
+                },
+                {
+                    "title": "October",
+                    "text": ["Lorem Ipsum", "Lorem Ipsum"]
+                },
+                {
+                    "title": "November - December",
+                    "text": ["Lorem Ipsum"]
+                }
+            ]
+        },
+        {
+            "year": "2018",
+            "pass": true,
+            "display": true,
+            "content": [
+                {
+                    "title": "January",
+                    "text": ["Lorem Ipsum"]
+                },
+                {
+                    "title": "March",
+                    "text": ["Lorem Ipsum"]
+                },
+                {
+                    "title": "September",
+                    "text": ["Lorem Ipsum"]
+                },
+                {
+                    "title": "December",
+                    "text": ["Lorem Ipsum"]
+                }
+            ]
+        },
+        {
+            "year": "2019",
+            "pass": false,
+            "display": false,
+            "content": [
+                {
+                    "title": "February",
+                    "text": ["Lorem Ipsum"]
+                },
+                {
+                    "title": "April",
+                    "text": ["Lorem Ipsum"]
+                }
+            ]
+        }
+    ];
     $('.loading-overlay').show();
     setTimeout(function() {$('.loading-overlay').hide()}, 5000);
     
@@ -28,44 +168,42 @@ $(document).ready(function() {
     if (section_id == "Token_allocation") {
         window.setTimeout(initHighChart, 1000);
     }
-    $.getJSON("data/roadmap.json", function (data) {
-        for(var i = 0; i < data.length; i++) {
-            var year = i + 1;
-            var monthtext = [];
-            var monthtitle = [];
-            var monthdata = [];
-            var yeardata = [];
-            yeardata[i] = '';
+    for(var i = 0; i < data.length; i++) {
+        var year = i + 1;
+        var monthtext = [];
+        var monthtitle = [];
+        var monthdata = [];
+        var yeardata = [];
+        yeardata[i] = '';
 
-            if(data[i].pass == true) {
-                $('.s_2__timeline__year.s_2__timeline__year-' + year).find('.s_2__timeline__checkbox').css("background-image", "url('img/graph-active-point.png')");
-            } 
-            $('.s_2__timeline__year.s_2__timeline__year-' + year).find('.s_2__timeline__label').append(data[i].year);
-            var content = data[i].content;
-            for(var j = 0; j < content.length; j++) {
-                if(data[i].content[j] != null) {
-                    monthtext[j] = '';
-                    var text = content[j].text;
-                    for(var k = 0; k < text.length; k++) {
-                        monthtext[j] += '<br>' + text[k];
-                    }   
-                    monthtitle[j] = '';
-                    monthtitle[j] = '<strong>' + content[j].title + '</strong>';
-                    monthdata[j] = '';
-                    monthdata[j] =  '<div class="d-table-cell s_2__tabs__col">' + monthtitle[j] + monthtext[j] + '</div>';                     
-                    yeardata[i] += monthdata[j]; 
-                }                
-            }  
-            var style = '';
-            if(data[i].display == true) {
-                style = 'block';
-            } else {
-                style = 'none';
-            }
-            var temp = '<div class="s_2__tab" id="s_2__tab-' + year + '" style="display: ' + style + '"><div class="d-table">' + yeardata[i] + '</div></div>';
-            $("#myroadmap").append(temp);
+        if(data[i].pass == true) {
+            $('.s_2__timeline__year.s_2__timeline__year-' + year).find('.s_2__timeline__checkbox').css("background-image", "url('img/graph-active-point.png')");
+        } 
+        $('.s_2__timeline__year.s_2__timeline__year-' + year).find('.s_2__timeline__label').append(data[i].year);
+        var content = data[i].content;
+        for(var j = 0; j < content.length; j++) {
+            if(data[i].content[j] != null) {
+                monthtext[j] = '';
+                var text = content[j].text;
+                for(var k = 0; k < text.length; k++) {
+                    monthtext[j] += '<br>' + text[k];
+                }   
+                monthtitle[j] = '';
+                monthtitle[j] = '<strong>' + content[j].title + '</strong>';
+                monthdata[j] = '';
+                monthdata[j] =  '<div class="d-table-cell s_2__tabs__col">' + monthtitle[j] + monthtext[j] + '</div>';                     
+                yeardata[i] += monthdata[j]; 
+            }                
+        }  
+        var style = '';
+        if(data[i].display == true) {
+            style = 'block';
+        } else {
+            style = 'none';
         }
-    });
+        var temp = '<div class="s_2__tab" id="s_2__tab-' + year + '" style="display: ' + style + '"><div class="d-table">' + yeardata[i] + '</div></div>';
+        $("#myroadmap").append(temp);
+    }
 });      
 
 
@@ -124,25 +262,32 @@ function initHighChart(){
                 return '';            
             },            
         },
-        series: [{
-            name: 'TOKEN ALLOCATION',
-            colorByPoint: true,
-            data: [{
-                name: 'Lorem',
-                y: 456.33,
-                sliced: true,
-                selected: true
-            }, {
-                name: 'Lorem',
-                y: 324.03
-            }, {
-                name: 'Lorem',
-                y: 210.38
-            }, {
-                name: 'Lorem',
-                y: 100.91
-            }]
-        }]
+        series: [
+            {
+                name: 'TOKEN ALLOCATION',
+                colorByPoint: true,
+                data: [
+                    {
+                        name: 'Lorem',
+                        y: 456.33,
+                        sliced: true,
+                        selected: true
+                    }, 
+                    {
+                        name: 'Lorem',
+                        y: 324.03
+                    }, 
+                    {
+                        name: 'Lorem',
+                        y: 210.38
+                    }, 
+                    {
+                        name: 'Lorem',
+                        y: 100.91
+                    }
+                ]
+            }
+        ]
     };
     
     var chart = new Highcharts.Chart(options);
