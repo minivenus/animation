@@ -1,13 +1,6 @@
-$(window).mousewheel(function(turn, delta) {
-    var str_section = window.location.href;
-    var section_id = str_section.substring(str_section.indexOf('#') + 1, str_section.length);
-    if (section_id == "Token_allocation") {
-        window.setTimeout(initHighChart, 1000);
-    }
 
-    return false;
-});
-$(document).ready(function() {
+$(document).ready(function() { 
+    initHighChart();  
     var data = [
         {
             "year" : "2014",
@@ -163,11 +156,6 @@ $(document).ready(function() {
             $("#on_off").html('off');
         }
     });
-    var str_section = window.location.href;
-    var section_id = str_section.substring(str_section.indexOf('#') + 1, str_section.length);
-    if (section_id == "Token_allocation") {
-        window.setTimeout(initHighChart, 1000);
-    }
     for(var i = 0; i < data.length; i++) {
         var year = i + 1;
         var monthtext = [];
@@ -255,7 +243,7 @@ function initHighChart(){
 
         },
         credits:{enabled: false},
-        colors: ['#60cae9', '#48ea8d', '#FFFFFF', '#48afea'],
+        // colors: ['#60cae9', '#48ea8d', '#FFFFFF', '#48afea'],
         legend: {
             enabled: true,
             labelFormatter: function() {
@@ -268,22 +256,32 @@ function initHighChart(){
                 colorByPoint: true,
                 data: [
                     {
-                        name: 'Lorem',
-                        y: 456.33,
-                        sliced: true,
-                        selected: true
+                        name: 'Early (SUP holders) Backers',
+                        y: 3
                     }, 
                     {
-                        name: 'Lorem',
-                        y: 324.03
+                        name: 'Dapp destribution favouring to early SUP holders',
+                        y: 45
                     }, 
                     {
-                        name: 'Lorem',
-                        y: 210.38
+                        name: 'Dapp/SuperDA0 Partners',
+                        y: 5
                     }, 
                     {
-                        name: 'Lorem',
-                        y: 100.91
+                        name: 'Bounty Pool',
+                        y: 15
+                    }, 
+                    {
+                        name: 'Marketing Budget ',
+                        y: 10
+                    }, 
+                    {
+                        name: 'Endownment Fund',
+                        y: 10
+                    }, 
+                    {
+                        name: 'CoreTeam Allocation ',
+                        y: 12
                     }
                 ]
             }
